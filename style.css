@@ -1,0 +1,399 @@
+/* 
+   STYLE GENERAL
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  color: #333;
+  padding: 25px;
+}
+
+/* 
+   ONGLETS
+*/
+
+.tab-btn {
+  background: #2563eb;
+  color: white;
+
+  border: none;
+
+  padding: 12px 20px;
+
+  margin-right: 10px;
+  margin-bottom: 20px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  transition: 0.2s;
+}
+
+.tab-btn:hover {
+  background: #1d4ed8;
+}
+
+#logout {
+  float: right;
+
+  background: #dc2626;
+  color: white;
+
+  border: none;
+
+  padding: 12px 20px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+#logout:hover {
+  background: #b91c1c;
+}
+
+/* 
+   CONTENU
+*/
+
+.tab-content {
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-bottom: 20px;
+
+  color: #1e3a8a;
+}
+
+/* 
+   INPUTS
+*/
+
+input,
+select {
+  width: 100%;
+
+  padding: 12px;
+
+  margin-top: 10px;
+  margin-bottom: 15px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+
+  border-color: #2563eb;
+
+  box-shadow: 0 0 4px rgba(37, 99, 235, 0.35);
+}
+
+/*
+   RADIO
+ */
+
+input[type="radio"] {
+  width: auto;
+
+  margin-right: 8px;
+}
+
+/* 
+   BOUTONS
+ */
+
+button {
+  background: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  padding: 12px 22px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+/* 
+   TABLEAUX
+ */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background: white;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+}
+
+thead {
+  background: #2563eb;
+
+  color: white;
+}
+
+th {
+  padding: 14px;
+}
+
+td {
+  padding: 12px;
+
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+tbody tr:hover {
+  background: #eef4ff;
+}
+
+/* 
+   BADGES
+*/
+
+.badge-visite {
+  background: #d1fae5;
+
+  color: #065f46;
+
+  padding: 16px 12px;
+
+  border-radius: 200px;
+
+  font-weight: bold;
+}
+
+.badge-formation {
+  background: #ede9fe;
+
+  color: #6d28d9;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-weight: bold;
+}
+
+/* 
+   QR CODE
+ */
+
+#reader-entree,
+#reader-sortie {
+  width: 320px;
+
+  margin-top: 15px;
+
+  padding: 10px;
+
+  background: white;
+
+  border: 2px solid #2563eb;
+
+  border-radius: 10px;
+}
+
+#qrcode {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+/* 
+   BADGE IMPRESSION
+*/
+
+.etiquette {
+  width: 360px;
+
+  min-height: 150px;
+
+  overflow: hidden;
+
+  border: 2px solid black;
+}
+.qr {
+  width: 120px;
+
+  height: 120px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.content {
+  flex: 1;
+}
+
+#badge-nom {
+  font-size: 22px;
+
+  font-weight: bold;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+#badge-info {
+  padding: auto;
+  margin-bottom: 8px;
+  margin-left: 10px;
+  color: #1d4ed8;
+
+  font-weight: bold;
+}
+
+#badge-local {
+  color: #555;
+  margin-left: 10px;
+}
+
+/* 
+   UTILITAIRES
+ */
+
+.hidden {
+  display: none;
+}
+
+/* RESPONSIVE MOBILE */
+
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  .tab-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #logout {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  input,
+  select,
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  #reader-entree,
+  #reader-sortie {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* RESPONSIVE TABLETTE */
+
+@media (min-width: 601px) and (max-width: 900px) {
+  body {
+    padding: 15px;
+  }
+
+  .tab-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #logout {
+    float: none;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* IMPRESSION */
+
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  body > *:not(#badge) {
+    display: none !important;
+  }
+
+  #badge {
+    display: flex !important;
+
+    position: absolute;
+
+    top: 20px;
+
+    left: 20px;
+
+    width: 360px;
+
+    visibility: visible !important;
+  }
+
+  #badge * {
+    visibility: visible !important;
+  }
+}

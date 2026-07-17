@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <title>App Accueil Tablette</title>
+  <script src="security.js" defer></script>
+  <script src="config.js" defer></script>
+  <script src="ui.js" defer></script>
+  <script src="formations.js" defer></script>
+  <script src="contact.js" defer></script>
+  <script src="visiteurs.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script src="qrcode.js" defer></script>
+
+</head>
+
+<body class="">
+  <div class="">
+
+    <!-- Tabs -->
+    <div class="">
+      <button class="tab-btn" onclick="showTab('entree', event)">Entrée</button>
+      <button class="tab-btn" onclick="showTab('sortie', event)">Sortie</button>
+      <button class="tab-btn" onclick="showTab('presents', event)">Présents</button>
+      <button class="tab-btn" onclick="showTab('historique', event)">Historique</button>
+    
+      <button id="logout">Déconnexion</button>
+    </div>
+
+    <!-- Contenu Entrée -->
+    <div id="entree" class="tab-content">
+      <h2 class="">Identification</h2>
+      <form class="space-y-4" id="form-entree">
+        <input type="text" placeholder="Nom" name="nom" id="nom" class="input border-gray-200 border-2 rounded p-1"
+          required />
+        <input type="text" placeholder="Prénom" name="prenom" id="prenom"
+          class="input border-gray-200 border-2 rounded p-1" required />
+        <input type="email" placeholder="Email" name="email" id="email"
+          class="input border-gray-200 border-2 rounded p-1" required />
+
+        <!-- Choix visite ou formation -->
+        <div class="space-y-2">
+          <label class="">Motif de la visite :</label>
+          <div class="">
+            <label class="">
+              <input type="radio" name="motif" value="formation" onchange="toggleMotif()" class="text-blue-600" />
+              Formation
+            </label>
+            <label class="">
+              <input type="radio" name="motif" value="visite" onchange="toggleMotif()" class="text-blue-600" />
+              Visite
+            </label>
+          </div>
+
+          <div id="choix-formation" class="hidden">
+            <select name="formation" class="input mt-2 border-gray-200 border-2 rounded p-1" id="formation">
+              <option value="">Choisir une formation</option>
+            </select>
+          </div>
+
+          <div id="choix-visite" class="hidden">
+            <select name="visite" class="" id="visite">
+              <option value="">Choisir un membre du personnel</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="">Valider l'entrée</button>
+
+        <br>
+        <br>
+        <!-- Zone QR / Recherche email -->
+        <div id="qrSection" class="">
+          <div class="">
+            <p class="mb-2 font-medium">Scanner votre QR Code</p>
+            <div id="reader-entree" class="bg-white border rounded" style="width:300px;height:300px;">
+            </div>
+          </div>
+          <br>
+
+          <p class="">Recherche par email</p>
+          <input type="email" placeholder="Votre email" id="email-enter" />
+          <button id="btn-rechercher" class="email-in">Rechercher</button>
+
+        </div>
+        <br>
+        <p>Recherche par ID</p>
+
+        <input type="number" id="id-enter" placeholder="Votre ID">
+
+        <button id="btn-id">
+          Rechercher
+        </button>
+    </div>
+
+    <!-- Contenu Sortie -->
+    <div id="sortie" class="tab-content">
+      <h2 class="">Sortie</h2>
+      <div class="">
+        <div class="">
+          <p class="">Scanner votre QR Code</p>
+          <div id="reader-sortie" class="bg-white border rounded" style="width:300px;height:300px;">
+          </div>
+          <br>
+        </div>
+        <p class="">Saisissez votre email</p>
+        <input type="email" placeholder="Votre email" id="email-sortie"
+          class="input mb-2 border-gray-200 border-2 rounded p-1" />
+        <button id="btn-sortie" class="">Valider sortie</button>
+        <br>
+        <br>
+      </div>
+      <p>Recherche par ID</p>
+
+      <input type="number" id="id-enter" placeholder="Votre ID">
+
+      <button id="btn-id">
+        Rechercher
+      </button>
+    </div>
+  </div>
+
+  <!-- Contenu Présents -->
+  <div id="presents" class="tab-content hidden">
+
+    <div class="flex items-center justify-between">
+
+      <h2>Visiteurs présents</h2>
+
+      <button id="btn-refresh">
+        🔄 Rafraîchir
+      </button>
+
+    </div>
+
+    <br>
+
+    <input type="text" id="recherche-present" placeholder="Rechercher un visiteur...">
+
+    <br><br>
+
+    <table border="1" width="100%">
+
+
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Email</th>
+          <th>Motif</th>
+          <th>Détail</th>
+          <th>Local</th>
+          <th>Télèphone</th>
+          <th>Entrée</th>
+        </tr>
+      </thead>
+
+      <tbody id="table-presents">
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <!-- Contenu Historique -->
+  <div id="historique" class="tab-content hidden">
+
+    <h2>Historique des visites</h2>
+
+    <div class="historique-filtre">
+
+      <label for="date-historique">Date :</label>
+
+      <input type="date" id="date-historique">
+
+      <button id="btn-recherche-date">
+        Rechercher
+      </button>
+
+      <button id="btn-reset-date">
+        Réinitialiser
+      </button>
+
+      <button id="btn-export-csv">Export CSV</button>
+
+    </div>
+
+    <br>
+
+    <table border="1" width="100%">
+
+      <thead>
+
+        <tr>
+
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Email</th>
+          <th>Motif</th>
+          <th>Entrée</th>
+          <th>Sortie</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody id="table-historique">
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <div id="administration" class="tab-content hidden">
+
+    <h2>Administration</h2>
+
+    <h3>Gestion du personnel</h3>
+
+    <!-- Nous ajouterons le tableau ici -->
+
+    <hr><br>
+
+    <h3>Gestion des formations</h3>
+
+    <!-- Puis celui des formations -->
+
+</div>
+
+  <!-- Etiquette imprimable -->
+  <div id="badge" class="etiquette hidden">
+
+    <div class="qr">
+      <div id="qrcode"></div>
+    </div>
+
+    <div class="content">
+      <div id="badge-nom"></div>
+      <div id="badge-info"></div>
+      <div id="badge-local"></div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

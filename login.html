@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Visiteurs en cours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="config.js" defer></script>
+<script src="auth.js" defer></script>
+</head>
+<body class="bg-gray-50 p-6">
+  <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-6 space-y-6">
+    <h1>Identification</h1>
+   <form id="login-form">
+    <label for="login">Login</label>
+    <input
+        type="text"
+        id="login"
+        class="border-gray-300 border p-2 w-full"
+        required
+    >
+
+    <label for="password">Mot de passe</label>
+    <input
+        type="password"
+        id="password"
+        class="border-gray-300 border p-2 w-full"
+        required
+    >
+
+    <button type="submit" class="border-gray-300 border p-2 mt-4">
+        Se connecter
+    </button>
+
+    <p id="erreur" class="text-red-600 mt-3"></p>
+</form>
+  </div>
+</body>
+</html>
