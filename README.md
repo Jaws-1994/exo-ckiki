@@ -72,6 +72,11 @@ Lors de la sortie :
 
 # 🛡️ Gestion des doublons
 
+
+login: 
+admin
+ingrwf13-pass
+
 Le système empêche les doubles enregistrements.
 
 Une personne est considérée comme déjà présente si :
